@@ -1,0 +1,16 @@
+{
+    "name": "Pendar.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c3d35b5b06f6cfa4e9d0c31297466dab"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

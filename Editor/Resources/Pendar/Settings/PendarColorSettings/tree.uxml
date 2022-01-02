@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd">
+    <VisualElement style="flex-direction: row; margin: 0 auto; width:260px;">
+        <Image name="Logo" class="logo"/>
+        <Label text="Color Settings" class="title"/>
+    </VisualElement>
+    <VisualElement style="padding: 15;">
+        <Slider label="Highlight" name="palette-highlight" low-value="0" high-value="100" value="0" range="100"/>
+        <Slider label="Shadow" name="palette-shadow" low-value="0" high-value="100" value="0" range="100"/>
+
+        <VisualElement name="palette-selector"></VisualElement>
+        <Toggle label="Use Custom Palette" name="custom-palette"></Toggle>
+
+        <VisualElement name="CustomPalette">
+            <uie:ColorField label="Base Color" name="palette-base-color" />
+            <Slider label="Hue Offset" name="palette-hue-offset" low-value="-15" high-value="15" value="0" range="31"/>
+
+            <VisualElement name="ColorBox" class="color-box">
+                <VisualElement class="palette-color">
+                    <TextElement text="Color_1" />
+                    <VisualElement name="palette-color-1"></VisualElement>
+                </VisualElement>
+            
+                <VisualElement class="palette-color">
+                    <TextElement text="Color_2" />
+                    <VisualElement name="palette-color-2"></VisualElement>
+                </VisualElement>
+            
+            
+                <VisualElement class="palette-color">
+                    <TextElement text="Color_3" />
+                    <VisualElement name="palette-color-3"></VisualElement>
+                </VisualElement>
+            
+
+                <VisualElement class="palette-color">
+                    <TextElement text="Color_4" />
+                    <VisualElement name="palette-color-4"></VisualElement>
+                </VisualElement>
+            
+
+                <VisualElement class="palette-color">
+                    <TextElement text="Color_5" />
+                    <VisualElement name="palette-color-5"></VisualElement>
+                </VisualElement>
+            
+                <VisualElement class="palette-color">
+                    <TextElement text="Color_6" />
+                    <VisualElement name="palette-color-6"></VisualElement>
+                </VisualElement>
+            </VisualElement>
+        </VisualElement>
+    </VisualElement>
+
+    <Label text="Display Settings" style="padding-top: 15px; -unity-text-align: middle-center;-unity-font-style: bold;" />
+    <VisualElement style="flex-direction: row; margin-top:10px;">
+        <Label text="Grayscale" style="margin-right: 30px; padding-left: 23px; -unity-text-align: middle-center;" />
+        <VisualElement name="grayscale">
+            <VisualElement name="grayscale-off" class="toggle toggle-off">
+                <Label text="Off" />
+                <VisualElement class="handle">
+                </VisualElement>
+            </VisualElement>
+            <VisualElement name="grayscale-on" class="toggle toggle-on">
+                <VisualElement class="handle">
+                </VisualElement>
+                <Label text="On" />
+            </VisualElement>
+        </VisualElement>
+    </VisualElement>
+</UXML>

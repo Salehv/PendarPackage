@@ -1,0 +1,74 @@
+.logo
+{
+	width: 100px;
+	height: 70px;
+	margin: 5px;
+}
+
+.title
+{
+	-unity-text-align: middle-center; 
+	-unity-font-style: bold;
+	margin-left:10px;
+	font-size: 18px;
+}
+
+.color-box
+{
+	flex-direction: row;
+}
+
+.palette-color
+{
+	margin-top:20px;
+	flex-grow: 1;
+}
+
+.palette-color TextElement
+{
+	width: 100%;
+	-unity-text-align: middle-center;
+	border-width: 1px;
+	border-color: gray;
+	padding: 4px;
+}
+
+.palette-color VisualElement
+{
+	height: 30px;
+	border-width: 1px;
+	border-color: gray;
+}
+
+.toggle
+{
+	-unity-text-align: middle-center;
+	border-width: 1px;
+	border-color: gray;
+	padding: 4px;
+	flex-direction: row;
+	height: 30px;
+}
+
+.toggle .handle
+{
+	border-radius: 4px;
+	background-color: white;
+	border-color: white;
+	width: 25px;
+}
+
+.toggle Label
+{
+	margin: 0 3px;
+}
+
+.toggle-on
+{
+	background-color: #0088FF;
+}
+
+.toggle-off
+{
+	background-color: transparent;
+}

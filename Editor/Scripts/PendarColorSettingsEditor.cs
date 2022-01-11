@@ -152,8 +152,10 @@ namespace PendarCo.Scripts.Editor
         {
             for (var i = 1; i <= PendarColorSettings.ColorCount; i++)
             {
-                _paletteColors[i - 1].style.backgroundColor = palette.colors[i - 1];
-                _colorSettings.regularMaterials[i - 1].SetColor(SIDColor, palette.colors[i - 1]);
+                if(_colorSettings.regularMaterials.Length > i - 1 && palette.colors.Length > i - 1) {
+                    _paletteColors[i - 1].style.backgroundColor = palette.colors[i - 1];
+                    _colorSettings.regularMaterials[i - 1].SetColor(SIDColor, palette.colors[i - 1]);
+                }
             }
 
         }

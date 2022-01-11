@@ -137,7 +137,9 @@ namespace PendarCo.Scripts.Editor
             for (var i = 1; i <= PendarColorSettings.ColorCount; i++)
             {
                 _paletteColors[i - 1].style.backgroundColor = color;
-                _colorSettings.regularMaterials[i - 1].SetColor(SIDColor, color);
+                if(_colorSettings.regularMaterials.Length > i - 1) {
+                    _colorSettings.regularMaterials[i - 1].SetColor(SIDColor, color);
+                }
                 
 
                 Color.RGBToHSV(color, out float h, out float s, out float l);

@@ -1,0 +1,21 @@
+{
+  "name": "com.pendar.core",
+  "version": "0.2.0",
+  "displayName": "Pendar Package",
+  "description": "pendar package to ease working on hypercasual games",
+  "unity": "2020.3",
+  "unityRelease": "24f1",
+  "type": "tool",
+  "documentationUrl": "https://google.com/",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "dependencies": {
+	  "com.unity.2d.sprite":"1.0.0"
+ },
+ "keywords": [],
+  "author": {
+    "name": "Pendar",
+    "email": "info@pendar.com",
+    "url": "https://pendar.com"
+  }
+}

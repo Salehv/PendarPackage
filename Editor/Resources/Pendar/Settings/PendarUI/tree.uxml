@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UXML
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="UnityEngine.UIElements"
+        xmlns:uie="UnityEditor.UIElements"
+        xsi:noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd">
+    <VisualElement style="flex-direction: row; margin: 0 auto; width:260px;">
+        <Image name="Logo" class="logo"/>
+        <Label text="UI Settings" class="title"/>
+    </VisualElement>
+    <VisualElement style="padding: 15;">
+        <VisualElement style="flex-direction: row; margin-top:10px;">
+            <Label text="Using Pendar UI"
+                   style="margin-right: 30px; padding-left: 23px; -unity-text-align: middle-center;"/>
+            <VisualElement name="activeUI">
+                <VisualElement name="activeUI-off" class="toggle toggle-off">
+                    <Label text="Off"/>
+                    <VisualElement class="handle">
+                    </VisualElement>
+                </VisualElement>
+                <VisualElement name="activeUI-on" class="toggle toggle-on">
+                    <VisualElement class="handle">
+                    </VisualElement>
+                    <Label text="On"/>
+                </VisualElement>
+            </VisualElement>
+        </VisualElement>
+    </VisualElement>
+</UXML>

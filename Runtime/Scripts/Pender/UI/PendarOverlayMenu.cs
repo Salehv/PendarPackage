@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class PendarOverlayMenu : MonoBehaviour
+namespace Pender.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PendarOverlayMenu : MonoBehaviour
     {
-        
-    }
+        public TMP_Text goldText;
+        public void Init()
+        {
+            Pendar.ui.GoldChanged += UpdateGold;
+            UpdateGold(0);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void UpdateGold(int gold)
+        {
+            goldText.text = gold + "";
+        }
     }
 }

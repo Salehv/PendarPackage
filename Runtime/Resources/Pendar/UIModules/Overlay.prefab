@@ -444,3 +444,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59463b2e12389e049894dd0ef2ba1ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldText: {fileID: 1891891302}

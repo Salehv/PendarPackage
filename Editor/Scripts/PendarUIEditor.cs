@@ -58,14 +58,18 @@ namespace PendarCo.Scripts.Editor
         private static PendarUISettings _ui;
 
         [MenuItem("Pendar/UI Settings")]
-        [InitializeOnLoadMethod]
         public static void SelectSettings()
+        {
+            Initialize();           
+            Selection.SetActiveObjectWithContext(_ui, null);
+        }
+
+        [InitializeOnLoadMethod]
+        private static void Initialize()
         {
             _ui = Resources.Load<PendarUISettings>("Pendar/PendarUI");
             if (_ui is null)
                 _ui = CreateSettings();
-
-            Selection.SetActiveObjectWithContext(_ui, null);
         }
 
         private static PendarUISettings CreateSettings()

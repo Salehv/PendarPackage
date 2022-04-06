@@ -2,55 +2,56 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 namespace Pender.UI.Widgets
 {
     [RequireComponent(typeof(Image))]
     public class PButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        [SerializeField] private Color buttonColor;
-        [SerializeField] private string text;
+        public Color buttonColor;
+        public string text;
+        public bool autoResize;
+        public HPadding padding;
+        
+        [Space]
+        public Image targetGraphic;
+        public TMP_Text targetText;
 
-        [Space] [SerializeField] private RectOffset padding;
-        [SerializeField] private Image targetGraphic;
-        [SerializeField] private TMP_Text targetText;
-
-        [Space] [SerializeField] private Sprite defaultSprite;
+        [Space]
+        [SerializeField] private Sprite defaultSprite;
         [SerializeField] private Sprite pressedSprite;
 
 
         public void OnPointerDown(PointerEventData eventData)
         {
             targetGraphic.sprite = pressedSprite;
-            ((RectTransform) targetText.transform).anchoredPosition += new Vector2(0, -13);
+            ((RectTransform)targetText.transform).anchoredPosition += new Vector2(0, -13);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             targetGraphic.sprite = defaultSprite;
-            ((RectTransform) targetText.transform).anchoredPosition += new Vector2(0, 13);
+            ((RectTransform)targetText.transform).anchoredPosition += new Vector2(0, 13);
         }
 
-#if UNITY_EDITOR
-        private void OnValidate()
+        public void AutoResize()
         {
-            targetGraphic.color = buttonColor;
-            targetText.text = text;
-            UnityEditor.EditorApplication.delayCall += Resize;
+            var size = ((RectTransform)transform).sizeDelta;
+
+            size.x = targetText.preferredWidth + padding.left + padding.right;
+            ((RectTransform)transform).sizeDelta = size;
+
+            targetText.rectTransform.sizeDelta = new Vector2(targetText.preferredWidth, targetText.rectTransform.sizeDelta.y);
+            targetText.rectTransform.anchoredPosition = new Vector2((padding.right - padding.left) / 2, 7.5f);
         }
+    }
 
-        private void Resize()
-        {
-            if (this == null)
-                return;
-
-            var size = ((RectTransform) transform).sizeDelta;
-
-            size.x = targetText.preferredWidth + padding.right + padding.left;
-            size.y = targetText.preferredHeight + padding.top + padding.bottom;
-            ((RectTransform) transform).sizeDelta = size;
-        }
-#endif
+    [Serializable]
+    public struct HPadding
+    {
+        public float right;
+        public float left;
     }
 }

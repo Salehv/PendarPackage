@@ -178,8 +178,7 @@ namespace PendarCo.Scripts.Editor
         [InitializeOnLoadMethod]
         private static void GrayInit()
         {
-
-            SelectSettings();
+            Initialize();
 
             var cam = Camera.main;
             if (cam)
@@ -199,11 +198,16 @@ namespace PendarCo.Scripts.Editor
         [MenuItem("Pendar/Color Settings")]
         public static void SelectSettings()
         {
+            Initialize();
+            
+            Selection.SetActiveObjectWithContext(_colorSettings, null);
+        }
+
+        private static void Initialize()
+        {
             _colorSettings = Resources.Load<PendarColorSettings>("Pendar/PendarColorSettings");
             if (_colorSettings is null)
                 _colorSettings = CreateSettings();
-            
-            Selection.SetActiveObjectWithContext(_colorSettings, null);
         }
 
         // TODO: Add Regular Materials and Default Palettes

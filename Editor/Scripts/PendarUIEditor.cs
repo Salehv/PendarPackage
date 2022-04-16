@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Editor.Scripts.EditorExtensions;
 using Pender.UI;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,6 +14,8 @@ namespace PendarCo.Scripts.Editor
     public class PendarUIEditor : UnityEditor.Editor
     {
         private Dictionary<string, CustomToggle> _toggles;
+
+        private VisualElement content;
 
         public override VisualElement CreateInspectorGUI()
         {
@@ -31,11 +35,47 @@ namespace PendarCo.Scripts.Editor
                 _toggles["activeUI"].ToggleState();
             });
             _toggles["activeUI"].SetState(_ui.isUIActive);
-            
-            if(!_ui.isUIActive)
+
+            if (!_ui.isUIActive)
                 return root;
 
-            
+            content = new VisualElement
+            {
+                style =
+                {
+                    display = DisplayStyle.Flex
+                }
+            };
+            root.Add(content);
+
+            /*var screen = new EnumField();
+            screen.bindingPath = "orientation";
+            screen.label = "Screen orientation";
+            screen.RegisterValueChangedCallback(evt =>
+            {
+                if (GameViewUtils.FindSize(GameViewSizeGroupType.Android, "Pendar Vertical") < 0)
+                {
+                    GameViewUtils.AddNewSize("Pendar Vertical", 1080, 2160);
+                }
+                
+                if (GameViewUtils.FindSize(GameViewSizeGroupType.Android, "Pendar Horizontal") < 0)
+                {
+                    GameViewUtils.AddNewSize("Pendar Horizontal", 2160, 1080);
+                }
+                switch (evt.newValue)
+                {
+                    case ScreenMode.Landscape:
+                        GameViewUtils.TrySetSize("Pendar Horizontal");
+                        return;
+                    case ScreenMode.Portrait:
+                        GameViewUtils.TrySetSize("Pendar Vertical");
+                        return;
+                }
+                
+            });
+            content.Add(screen);
+            */
+
             return root;
         }
 
@@ -51,6 +91,7 @@ namespace PendarCo.Scripts.Editor
         private void ToggleUI()
         {
             _ui.isUIActive = !_ui.isUIActive;
+            content.style.display = _ui.isUIActive ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
         #region Menu Item
@@ -60,7 +101,7 @@ namespace PendarCo.Scripts.Editor
         [MenuItem("Pendar/UI Settings")]
         public static void SelectSettings()
         {
-            Initialize();           
+            Initialize();
             Selection.SetActiveObjectWithContext(_ui, null);
         }
 

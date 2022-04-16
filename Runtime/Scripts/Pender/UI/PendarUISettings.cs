@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace Pender.UI
@@ -7,5 +8,14 @@ namespace Pender.UI
     {
         public bool isUIActive;
         public bool customCurrencyIcon;
+        //        public ScreenMode orientation; 
+
     }
+
+    /*[Serializable]
+    public enum ScreenMode
+    {
+        Landscape,
+        Portrait
+    }*/
 }

@@ -1,11 +1,22 @@
 using UnityEngine;
 
-public class PPanel : MonoBehaviour
+namespace Pender.UI.Widgets
 {
-    public string panelName;
-
-    public void SetVisibility(bool show)
+    public class PPanel : MonoBehaviour
     {
-        gameObject.SetActive(show);
+        public string panelName;
+        public bool showOnStart;
+        
+        private void Start()
+        {
+            Pendar.ui.RegisterPanel(this);
+        }
+        
+        
+
+        public void SetVisibility(bool show)
+        {
+            gameObject.SetActive(show);
+        }
     }
 }

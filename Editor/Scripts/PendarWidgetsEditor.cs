@@ -2,32 +2,47 @@ using Pender;
 using Pender.UI.Widgets;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Editor.Scripts
 {
     public class PendarWidgetsEditor : MonoBehaviour
     {
-        #region Panels
-        [MenuItem("GameObject/UI/Pendar/Custom Panel", priority = -3)]
-        private static void NewPanel(MenuCommand cmd)
+        [MenuItem("GameObject/Pendar UI/Canvas - Vertical", priority = -11)]
+        private static void CreateVCanvas()
         {
-            var g = Instantiate(Resources.Load<GameObject>($"Pendar/UIModules/CustomPanel"));
-            g.name = "Panel";
-            GameObjectUtility.SetParentAndAlign(g, cmd.context as GameObject);
-            Selection.activeObject = g;
+            CreateCanvas(1080, 2160);   
+        }
+        
+        [MenuItem("GameObject/Pendar UI/Canvas - Horizontal", priority = -10)]
+        private static void CreateHCanvas()
+        {
+            CreateCanvas(2160, 1080);
         }
 
-        #endregion
+        private static void CreateCanvas(float w, float h)
+        {
+            var g = new GameObject();
+            g.name = "Pendar Canvas";
+            var c = g.AddComponent<Canvas>();
+            var sc = g.AddComponent<CanvasScaler>();
+            var gr = g.AddComponent<GraphicRaycaster>();
+            c.renderMode = RenderMode.ScreenSpaceOverlay;
+            sc.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            sc.referenceResolution = new Vector2(w, h);
+        }
 
         #region Buttons
-        [MenuItem("GameObject/UI/Pendar/SimpleButton", true)]
-        [MenuItem("GameObject/UI/Pendar/AdButton", true)]
-        [MenuItem("GameObject/UI/Pendar/BackButton", true)]
-        [MenuItem("GameObject/UI/Pendar/CurrencyButton", true)]
-        [MenuItem("GameObject/UI/Pendar/TextButton", true)]
-        [MenuItem("GameObject/UI/Pendar/CloseButton", true)]
-        [MenuItem("GameObject/UI/Pendar/Custom Panel", true)]
 
+        [MenuItem("GameObject/Pendar UI/Canvas - Horizontal", true)]
+        [MenuItem("GameObject/Pendar UI/Canvas - Vertical", true)]
+        [MenuItem("GameObject/Pendar UI/Buttons/SimpleButton", true)]
+        [MenuItem("GameObject/Pendar UI/Buttons/AdButton", true)]
+        [MenuItem("GameObject/Pendar UI/Buttons/BackButton", true)]
+        [MenuItem("GameObject/Pendar UI/Buttons/CurrencyButton", true)]
+        [MenuItem("GameObject/Pendar UI/Buttons/TextButton", true)]
+        [MenuItem("GameObject/Pendar UI/Buttons/CloseButton", true)]
+        [MenuItem("GameObject/Pendar UI/Buttons/Panels/Custom Panel", true)]
         private static bool ValidateButton()
         {
             return Pendar.UISettings.isUIActive;
@@ -46,45 +61,60 @@ namespace Editor.Scripts
             return g;
         }
 
-        [MenuItem("GameObject/UI/Pendar/SimpleButton", priority = 1)]
+        [MenuItem("GameObject/Pendar UI/Buttons/SimpleButton", priority = 0)]
         private static void CreateSimpleButton(MenuCommand cmd)
         {
             _ = CreateButton("SimpleButton", cmd.context as GameObject);
         }
 
 
-        [MenuItem("GameObject/UI/Pendar/AdButton", priority = 1)]
+        [MenuItem("GameObject/Pendar UI/Buttons/AdButton", priority = 0)]
         private static void CreateAdButton(MenuCommand cmd)
         {
             _ = CreateButton("AdButton", cmd.context as GameObject);
         }
 
 
-        [MenuItem("GameObject/UI/Pendar/BackButton", priority = 1)]
+        [MenuItem("GameObject/Pendar UI/Buttons/BackButton", priority = 0)]
         private static void CreateBackButton(MenuCommand cmd)
         {
             _ = CreateButton("BackButton", cmd.context as GameObject);
         }
 
 
-        [MenuItem("GameObject/UI/Pendar/CurrencyButton", priority = 1)]
+        [MenuItem("GameObject/Pendar UI/Buttons/CurrencyButton", priority = 0)]
         private static void CreateCurrencyButton(MenuCommand cmd)
         {
             _ = CreateButton("CurrencyButton", cmd.context as GameObject);
         }
 
 
-        [MenuItem("GameObject/UI/Pendar/TextButton", priority = 1)]
+        [MenuItem("GameObject/Pendar UI/Buttons/TextButton", priority = 0)]
         private static void CreateTextButton(MenuCommand cmd)
         {
             _ = CreateButton("TextButton", cmd.context as GameObject);
         }
 
-        [MenuItem("GameObject/UI/Pendar/CloseButton", priority = 1)]
+        [MenuItem("GameObject/Pendar UI/Buttons/CloseButton", priority = 0)]
         private static void CreateCloseButton(MenuCommand cmd)
         {
             _ = CreateButton("CloseButton", cmd.context as GameObject);
         }
+
+        #endregion
+
+
+        #region Panels
+
+        [MenuItem("GameObject/Pendar UI/Panels/Custom Panel", false, 10)]
+        private static void NewPanel(MenuCommand cmd)
+        {
+            var g = Instantiate(Resources.Load<GameObject>($"Pendar/UIModules/CustomPanel"));
+            g.name = "Panel";
+            GameObjectUtility.SetParentAndAlign(g, cmd.context as GameObject);
+            Selection.activeObject = g;
+        }
+
         #endregion
     }
 }

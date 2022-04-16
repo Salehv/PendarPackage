@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace Pender.UI.Widgets
 {
     [RequireComponent(typeof(Image))]
-    public class PButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class PButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
         [SerializeField]
 
@@ -31,13 +31,18 @@ namespace Pender.UI.Widgets
         public void OnPointerDown(PointerEventData eventData)
         {
             targetGraphic.sprite = pressedSprite;
-            ((RectTransform)targetText.transform).anchoredPosition += new Vector2(0, -13);
+            ((RectTransform)targetText.transform).anchoredPosition += new Vector2(0, -13);            
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             targetGraphic.sprite = defaultSprite;
             ((RectTransform)targetText.transform).anchoredPosition += new Vector2(0, 13);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            onClick.Clicked();
         }
 
         public void AutoResize()

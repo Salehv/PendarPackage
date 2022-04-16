@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PPanel : MonoBehaviour
 {
-    
+    public string panelName;
+
+    public void SetVisibility(bool show)
+    {
+        gameObject.SetActive(show);
+    }
 }

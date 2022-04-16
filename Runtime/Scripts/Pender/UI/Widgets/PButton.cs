@@ -1,15 +1,19 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
-using Image = UnityEngine.UI.Image;
+using UnityEngine.UI;
 
 namespace Pender.UI.Widgets
 {
     [RequireComponent(typeof(Image))]
     public class PButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        [SerializeField]
+
+        public PUIEvent onClick;
+
         public Color buttonColor;
         public string text;
         public bool autoResize;

@@ -14,6 +14,23 @@ public class PButtonEditor : UnityEditor.Editor
 
         var root = new VisualElement();
 
+        var b = new Box();
+        b.style.paddingBottom = b.style.paddingTop = b.style.paddingRight = b.style.paddingLeft = 5;
+        var p = new PropertyField();
+        p.bindingPath = "onClick";
+        b.Add(p);   
+        root.Add(b);
+
+        /*var action = new EnumField(PendarClickAction.ShowPanel);
+        action.label = "Action Type";
+        action.bindingPath = "onClick";
+        b.Add(action);*/
+
+        /*var evt = new PropertyField();
+        evt.label = "Additional OnClick Calls";
+        evt.bindingPath = "onClick";
+        firstFold.Add(evt);*/
+
         var color = new ColorField();
         color.label = "Color";
         color.bindingPath = "buttonColor";

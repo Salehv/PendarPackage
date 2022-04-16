@@ -6,7 +6,6 @@ namespace Pender.UI
     public class PendarUISettings : ScriptableObject
     {
         public bool isUIActive;
-        
-        
+        public bool customCurrencyIcon;
     }
 }

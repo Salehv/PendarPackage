@@ -42,7 +42,7 @@ namespace Editor.Scripts
         [MenuItem("GameObject/Pendar UI/Buttons/CurrencyButton", true)]
         [MenuItem("GameObject/Pendar UI/Buttons/TextButton", true)]
         [MenuItem("GameObject/Pendar UI/Buttons/CloseButton", true)]
-        [MenuItem("GameObject/Pendar UI/Buttons/Panels/Custom Panel", true)]
+        [MenuItem("GameObject/Pendar UI/Panels/Custom Panel", true)]
         private static bool ValidateButton()
         {
             return Pendar.UISettings.isUIActive;

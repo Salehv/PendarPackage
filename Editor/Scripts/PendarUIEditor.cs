@@ -36,47 +36,12 @@ namespace PendarCo.Scripts.Editor
             });
             _toggles["activeUI"].SetState(_ui.isUIActive);
 
-            if (!_ui.isUIActive)
-                return root;
-
-            content = new VisualElement
-            {
-                style =
-                {
-                    display = DisplayStyle.Flex
-                }
-            };
+            content = root.Q<VisualElement>("Content");
+            content.style.display = _ui.isUIActive ? DisplayStyle.Flex : DisplayStyle.None;
             root.Add(content);
 
-            /*var screen = new EnumField();
-            screen.bindingPath = "orientation";
-            screen.label = "Screen orientation";
-            screen.RegisterValueChangedCallback(evt =>
-            {
-                if (GameViewUtils.FindSize(GameViewSizeGroupType.Android, "Pendar Vertical") < 0)
-                {
-                    GameViewUtils.AddNewSize("Pendar Vertical", 1080, 2160);
-                }
-                
-                if (GameViewUtils.FindSize(GameViewSizeGroupType.Android, "Pendar Horizontal") < 0)
-                {
-                    GameViewUtils.AddNewSize("Pendar Horizontal", 2160, 1080);
-                }
-                switch (evt.newValue)
-                {
-                    case ScreenMode.Landscape:
-                        GameViewUtils.TrySetSize("Pendar Horizontal");
-                        return;
-                    case ScreenMode.Portrait:
-                        GameViewUtils.TrySetSize("Pendar Vertical");
-                        return;
-                }
-                
-            });
-            content.Add(screen);
-            */
-
             return root;
+
         }
 
         private void AddCustomToggle(VisualElement root, string id, EventCallback<ClickEvent> onClick)

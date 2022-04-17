@@ -3,6 +3,7 @@ using Pender.UI.Widgets;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Editor.Scripts
 {
@@ -30,6 +31,14 @@ namespace Editor.Scripts
             c.renderMode = RenderMode.ScreenSpaceOverlay;
             sc.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             sc.referenceResolution = new Vector2(w, h);
+            
+            if (FindObjectOfType<EventSystem>() == null)
+            {
+                var evt = new GameObject();
+                evt.name = "EventSystem";
+                evt.AddComponent<EventSystem>();
+                evt.AddComponent<StandaloneInputModule>();
+            }
         }
 
         #region Buttons

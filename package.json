@@ -1,6 +1,6 @@
 {
   "name": "com.pendar.core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "displayName": "Pendar Package",
   "description": "pendar package to ease working on hypercasual games",
   "unity": "2020.3",

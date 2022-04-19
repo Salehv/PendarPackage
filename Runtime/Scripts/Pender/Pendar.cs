@@ -17,7 +17,7 @@ namespace Pender
             UISettings = Resources.Load<PendarUISettings>("Pendar/PendarUI");
         }
 
-        [RuntimeInitializeOnLoadMethod]
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Init()
         {
             if (UISettings.isUIActive)

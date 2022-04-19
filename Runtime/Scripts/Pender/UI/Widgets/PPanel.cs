@@ -7,7 +7,7 @@ namespace Pender.UI.Widgets
         public string panelName;
         public bool showOnStart;
         
-        private void Start()
+        private void Awake()
         {
             Pendar.ui.RegisterPanel(this);
         }
